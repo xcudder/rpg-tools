@@ -1,0 +1,12 @@
+import type { Dispatch, SetStateAction } from 'react'
+
+interface NameFieldProps {
+  name: string;
+  onChange: Dispatch<SetStateAction<string>>;
+}
+
+export const NameField = ({ name, onChange }: NameFieldProps) => {
+  return (
+    <input type="text" value={name} onChange={(e) => onChange(e.target.value)} />
+  )
+}

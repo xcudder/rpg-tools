@@ -1,0 +1,41 @@
+.app {
+  font-family: 'Arial', sans-serif;
+}
+
+.feedback-success {
+  color: green;
+}
+
+.feedback-error {
+  color: red;
+}
+
+.attribute-row {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 10px;
+  text-transform: capitalize;
+  
+  span {
+    width: 190px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  button {
+    height: 20px;
+    width: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 100%;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+  }
+}
+/* Test change */
+

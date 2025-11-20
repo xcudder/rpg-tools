@@ -1,0 +1,23 @@
+{
+  "name": "app",
+  "private": true,
+  "scripts": {
+    "build": "node esbuild.config.js",
+    "build:watch": "node esbuild.config.js --watch",
+    "typecheck": "tsc --noEmit",
+    "typecheck:verbose": "tsc --noEmit --listFiles | head -20"
+  },
+  "dependencies": {
+    "@hotwired/turbo-rails": "^7.3.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "esbuild": "^0.19.0",
+    "esbuild-sass-plugin": "^2.0.0",
+    "sass": "^1.69.0",
+    "typescript": "^5.3.0"
+  }
+}

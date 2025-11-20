@@ -1,0 +1,46 @@
+services:
+  app:
+    build:
+      context: ./
+    volumes:
+      - .:/app # bind mount source code
+      - bundle_cache:/bundle
+    depends_on:
+      - postgres
+    environment:
+      DATABASE_URL: postgres://exercises:sekret@postgres:5432/exercises_development
+      BIND: tcp://0.0.0.0:3000
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.app.rule=Host(`exercises.localhost`)"
+      - "traefik.http.routers.app.entrypoints=web"
+      - "traefik.http.services.app.loadbalancer.server.port=3000"
+
+  proxy:
+    image: traefik:v3.4
+    command:
+      - --providers.docker
+      - --entrypoints.web.address=:80
+      - --api.insecure=true
+      - --providers.docker.exposedbydefault=false
+    ports:
+      - 80:80
+      - 8080:8080 # for Traefik dashboard
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: exercises_development
+      POSTGRES_USER: exercises
+      POSTGRES_PASSWORD: sekret
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:alpine
+
+volumes:
+  postgres_data:
+  bundle_cache:
