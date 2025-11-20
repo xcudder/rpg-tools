@@ -1,5 +1,18 @@
 .app {
+  align-items: normal;
+  display: flex;
+  flex-wrap: wrap;
   font-family: 'Arial', sans-serif;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 50px;
+  max-width: 800px;
+
+  > div {
+    min-width: 375px;
+    width: 45%;
+  }
 }
 
 .feedback-success {
